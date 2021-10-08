@@ -18,10 +18,7 @@ module.exports = class LinkedList {
         this.tail = node
     }
     pop() {
-        let node = this.head
-        for (let i = 0; i < this.length - 1; i++) {
-            node = node.next
-        }
+        let node = this.find(this.length - 1)
         node.next = null
         this.tail = node
         this.length--
@@ -44,7 +41,6 @@ module.exports = class LinkedList {
             this.length--
             return head.value
         }
-
         const node = this.find(index - 1)
         const excise = node.next
         if (!excise) return null
