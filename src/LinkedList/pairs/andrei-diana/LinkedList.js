@@ -33,6 +33,34 @@ module.exports = class LinkedList {
         }
         return node.value
     }
+    delete(index) {
+        if (index === 0) {
+            const head = this.head
+            if (head) {
+                this.head = head.next
+            } else {
+                this.head = null
+            }
+            this.length--
+            return head.value
+        }
+
+        const node = this.find(index - 1)
+        const excise = node.next
+        if (!excise) return null
+        node.next = excise.next
+        if (!node.next.next) this.tail = node.next
+        this.length--
+        console.log(this.head)
+        return excise.value
+    }
+    find(index) {
+        let node = this.head
+        for (let i = 0; i < index - 1; i++) {
+            node = node.next
+        }
+        return node
+    }
 }
 
 class Node {
