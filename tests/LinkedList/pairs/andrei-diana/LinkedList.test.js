@@ -26,4 +26,15 @@ describe('LinkedList', () => {
         }
         expect(list.get(6)).toEqual(12)
     })
+    test('delete', () => { 
+        const list = new LinkedList()
+        for (let i = 0; i <= 20; i++) {
+            list.push((i + 1) * 2)
+        }
+        const length = list.length;
+        list.delete(2);
+        expect(list.get(2)).toEqual(6);
+        list.delete(4);
+        expect(list.get(4)).toEqual(12);
+    })
 })
