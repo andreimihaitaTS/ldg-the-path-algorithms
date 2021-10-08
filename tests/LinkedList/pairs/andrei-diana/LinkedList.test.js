@@ -19,4 +19,11 @@ describe('LinkedList', () => {
         list.pop()
         expect(list.length).toEqual(3)
     })
+    test('get element by index', () => {
+        const list = new LinkedList()
+        for (let i = 0; i <= 3; i++) {
+            list.push((i+1) * 2) 
+        }
+        expect(list.get(2)).toEquals(4)
+    })
 })
