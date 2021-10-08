@@ -13,7 +13,9 @@ describe('LinkedList', () => {
     })
     test('pop', () => {
         const list = new LinkedList()
-        for (let i = 0; i <= 3; i++) list.push('text')
+        for (let i = 0; i <= 3; i++) {
+            list.push('text')
+        }
         list.pop()
         expect(list.length).toEqual(3)
     })

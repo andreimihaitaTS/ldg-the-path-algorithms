@@ -12,7 +12,19 @@ module.exports = class LinkedList {
         } else if (this.tail) {
             this.tail.next = node
         }
+        if (this.length === 1) {
+            this.head = node
+        }
         this.tail = node
+    }
+    pop() {
+        let node = this.head
+        for (let i = 0; i < this.length - 1; i++) {
+            node = node.next
+        }
+        node.next = null
+        this.tail = node
+        this.length--
     }
 }
 
