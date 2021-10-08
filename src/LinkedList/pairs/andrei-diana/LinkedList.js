@@ -26,6 +26,13 @@ module.exports = class LinkedList {
         this.tail = node
         this.length--
     }
+    get(index) {
+        let node = this.head
+        for (let i = 0; i < index - 1; i++) {
+            node = node.next
+        }
+        return node.value
+    }
 }
 
 class Node {
