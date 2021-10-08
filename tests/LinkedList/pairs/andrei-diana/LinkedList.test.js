@@ -5,5 +5,11 @@ describe('LinkedList', () => {
         const list = new LinkedList()
 
         expect(list).toBeDefined()
-    })
+    });
+    test('push', () =>{
+        const list = new LinkedList();
+        for (let i=0; i<= 3; i++)
+            list.push("text");
+        expect(list.length).toEqual(4);
+    });
 })
