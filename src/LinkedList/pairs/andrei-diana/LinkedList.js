@@ -4,6 +4,7 @@ module.exports = class LinkedList {
         this.head = null
         this.tail = null
     }
+
     push(value) {
         const node = new Node(value)
         this.length++
@@ -19,15 +20,14 @@ module.exports = class LinkedList {
     }
     pop() {
         let node = this.find(this.length - 1)
+        const lastNode = node.next
         node.next = null
         this.tail = node
         this.length--
+        return lastNode.value
     }
     get(index) {
-        let node = this.head
-        for (let i = 0; i < index - 1; i++) {
-            node = node.next
-        }
+        let node = this.find(index)
         return node.value
     }
     delete(index) {
@@ -47,9 +47,16 @@ module.exports = class LinkedList {
         node.next = excise.next
         if (!node.next.next) this.tail = node.next
         this.length--
-        console.log(this.head)
         return excise.value
     }
+    unshift(value) {
+        let formerHead = this.head
+        let newNode = new Node(value)
+        this.head = newNode
+        this.head.next = formerHead
+        this.length++
+    }
+
     find(index) {
         let node = this.head
         for (let i = 0; i < index - 1; i++) {

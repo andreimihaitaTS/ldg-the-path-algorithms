@@ -1,42 +1,39 @@
 const LinkedList = require('../../../../src/LinkedList/pairs/andrei-diana/LinkedList')
 
-describe('LinkedList', () => {
+describe('test', () => {
+    beforeEach(() => {
+        list = new LinkedList()
+        for (let i = 1; i <= 20; i++) {
+            list.push(i * 2)
+        }
+    })
     test('can create a new list', () => {
-        const list = new LinkedList()
-
         expect(list).toBeDefined()
     })
     test('push', () => {
-        const list = new LinkedList()
-        for (let i = 0; i <= 3; i++) list.push('text')
-        expect(list.length).toEqual(4)
+        expect(list.length).toEqual(20)
     })
     test('pop', () => {
-        const list = new LinkedList()
-        for (let i = 0; i <= 3; i++) {
-            list.push(i)
-        }
         list.pop()
-        expect(list.length).toEqual(3)
+        expect(list.length).toEqual(19)
     })
     test('get element by index', () => {
-        const list = new LinkedList()
-        for (let i = 0; i <= 20; i++) {
-            list.push((i + 1) * 2)
-        }
         expect(list.get(6)).toEqual(12)
-        expect(list.get(1)).toEqual(2)
+        expect(list.get(8)).toEqual(16)
     })
     test('delete', () => {
-        const list = new LinkedList()
-        for (let i = 0; i <= 20; i++) {
-            list.push((i + 1) * 2)
-        }
         const length = list.length
         list.delete(2)
+        expect(list.length).toEqual(length - 1)
         expect(list.get(2)).toEqual(6)
         list.delete(4)
+        expect(list.length).toEqual(length - 2)
         expect(list.get(4)).toEqual(12)
-        expect(list.length == length - 1)
+    })
+    test('unshift', () => {
+        const length = list.length
+        list.unshift(678)
+        expect(list.get(1)).toEqual(678)
+        expect(list.length).toEqual(length + 1)
     })
 })
